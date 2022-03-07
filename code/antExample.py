@@ -8,6 +8,13 @@ from random import randint
 from pyAmakCore.classes.agent import Agent
 from color import Color
 
+import paho.mqtt.client as mqtt
+import json
+
+client = mqtt.Client()
+client.connect("192.168.43.200", 1883, 60)
+
+
 class AntExampleV1(Agent):
     int_to_color = {
         0: Color.BLUE,
@@ -61,13 +68,18 @@ class AntExampleV1(Agent):
         if self._dy > self.get_environment().ymax:
             self._dy = self.get_environment().ymax
 
+        self.publish_state()
+
     def on_perceive(self) -> None:
         self.reset_neighbour()
         for agent in self.get_amas().get_agents():
-            length = sqrt(pow(self._dx - agent.get_dx(), 2) + pow(self._dy - agent.get_dy(), 2))
+            length = sqrt(pow(self._dx - agent.get_dx(), 2) +
+                          pow(self._dy - agent.get_dy(), 2))
             if length < self.get_environment().field_of_view and self != agent:
                 self.add_neighbour(agent)
         self.find_the_majority_color()
+
+        self.publish_state()
 
     def on_act(self) -> None:
         # couleur
@@ -79,9 +91,16 @@ class AntExampleV1(Agent):
         # déplacement
         self.make_random_move()
 
+        self.publish_state()
+
     def find_the_majority_color(self) -> Color:
         couleurs_voisin = [0, 0, 0, 0, 0]
         for agent in self.get_neighbour():
-            couleurs_voisin[AntExampleV1.color_to_int.get(agent.get_color())] += 1
+            couleurs_voisin[AntExampleV1.color_to_int.get(
+                agent.get_color())] += 1
 
-        self.majority_color = AntExampleV1.int_to_color.get(couleurs_voisin.index(max(couleurs_voisin)))
+        self.majority_color = AntExampleV1.int_to_color.get(
+            couleurs_voisin.index(max(couleurs_voisin)))
+
+    def publish_state(self):
+        client.publish("topic/agent_state", json.dumps(self))

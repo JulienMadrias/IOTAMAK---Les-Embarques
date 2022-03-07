@@ -8,7 +8,7 @@ PORT = 5001
 FILENAME = 'code.zip'
 
 SEPARATOR = '<SEPARATOR>'
-BUFFER_SIZE = 1024 * 4 #4KB
+BUFFER_SIZE = 1024 * 4  # 4KB
 
 
 def accept_connection():
@@ -36,12 +36,13 @@ def send_file(filename, client_socket):
         while True:
             # read the bytes from the file
             bytes_read = f.read(BUFFER_SIZE)
-            if not bytes_read:                
+            if not bytes_read:
                 break
-            client_socket.sendall(bytes_read)  
+            client_socket.sendall(bytes_read)
 
             progress.update(len(bytes_read))
 
     client_socket.close()
+
 
 accept_connection()
