@@ -103,4 +103,4 @@ class AntExampleV1(Agent):
             couleurs_voisin.index(max(couleurs_voisin)))
 
     def publish_state(self):
-        client.publish("topic/agent_state", json.dumps(self))
+        client.publish("topic/agent_state", json.dumps(self.__dict__))
