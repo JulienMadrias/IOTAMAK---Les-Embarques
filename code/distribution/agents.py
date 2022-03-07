@@ -1,11 +1,17 @@
 import socket
 import tqdm
 import os
+import zipfile
+import subprocess
 
 
-HOST = '127.0.0.1'
-PORT = 1234
+HOST = '192.168.43.54'
+PORT = 5001
 SEPARATOR = '<SEPARATOR>'
+# receive 4096 bytes each time
+BUFFER_SIZE = 4096
+
+filename = None
 
 # create the client socket
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
@@ -27,7 +33,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
     with open(filename, 'wb') as f:
         while True:
             # read 1024 bytes from the socket (receive)
-            bytes_read = client_socket.recv(1024)
+            bytes_read = client_socket.recv(BUFFER_SIZE)
             if not bytes_read:
                 # nothing is received
                 # file transmitting is done
@@ -36,3 +42,12 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
             f.write(bytes_read)
             # update the progress bar
             progress.update(len(bytes_read))
+
+
+if filename:
+    with zipfile.ZipFile(filename, "r") as zip_ref:
+        os.mkdir('agent-code')
+        zip_ref.extractall("agent-code")
+        subprocess.Popen('python3 agent-code/main.py')
+else:
+    print('Something wrong happenned')

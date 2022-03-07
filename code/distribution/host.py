@@ -3,11 +3,12 @@ import tqdm
 import os
 import threading
 
-HOST = '127.0.0.1'
-PORT = 1234
+HOST = '192.168.43.54'
+PORT = 5001
 FILENAME = 'code.zip'
 
 SEPARATOR = '<SEPARATOR>'
+BUFFER_SIZE = 1024 * 4 #4KB
 
 
 def accept_connection():
@@ -34,7 +35,7 @@ def send_file(filename, client_socket):
     with open(filename, 'rb') as f:
         while True:
             # read the bytes from the file
-            bytes_read = f.read(1024)
+            bytes_read = f.read(BUFFER_SIZE)
             if not bytes_read:                
                 break
             client_socket.sendall(bytes_read)  
