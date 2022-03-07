@@ -32,14 +32,14 @@ ToOverrideWarning.enable_warning(False)
 fenetre = Fenetre("Prototype Ants")
 
 
-"""
+
 env = WorldExample(0, fenetre.get_canvas_width(), 0, fenetre.get_canvas_height(), 5, 7)
 # amas = AntHillExample(env, ExecutionPolicy.ONE_PHASE)
 amas = AntHillExample(env, ExecutionPolicy.TWO_PHASES)
 
 scheduler = SimpleScheduler(amas)
-"""
-scheduler = SimpleScheduler.load()
+
+# scheduler = SimpleScheduler.load()
 
 controleur = ControleurAntsExample(fenetre, scheduler)
 def main():

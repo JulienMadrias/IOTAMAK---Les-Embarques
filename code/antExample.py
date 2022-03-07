@@ -12,7 +12,7 @@ import paho.mqtt.client as mqtt
 import json
 
 client = mqtt.Client()
-client.connect("192.168.43.200", 1883, 60)
+client.connect('192.168.43.200', 1883, 60)
 
 
 class AntExampleV1(Agent):
@@ -103,4 +103,6 @@ class AntExampleV1(Agent):
             couleurs_voisin.index(max(couleurs_voisin)))
 
     def publish_state(self):
-        client.publish("topic/agent_state", json.dumps(self))
+        for index, agent in enumerate(self.get_amas().get_agents()):
+            client.publish(f'topic/agent_state/{index+1}',
+                           json.dumps({'Agent': index+1, 'x': agent.get_dx(), 'y': agent.get_dy()}))
