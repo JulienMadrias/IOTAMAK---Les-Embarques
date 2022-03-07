@@ -5,7 +5,7 @@ import zipfile
 import subprocess
 
 
-HOST = '192.168.43.54'
+HOST = '192.168.43.200'
 PORT = 5001
 SEPARATOR = '<SEPARATOR>'
 # receive 4096 bytes each time
@@ -43,6 +43,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
 
 
 with zipfile.ZipFile(filename, "r") as zip_ref:
-    os.mkdir('agent-code')
+    if not os.path.exists('agent-code'):
+        os.mkdir('agent-code')    
     zip_ref.extractall("agent-code")
-    subprocess.Popen('python3 agent-code/main.py')
+    os.chdir('agent-code')
+    subprocess.Popen('python3 main.py', shell=True)
+
