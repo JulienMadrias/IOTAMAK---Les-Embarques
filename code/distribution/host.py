@@ -1,7 +1,6 @@
 import socket
 import tqdm
 import os
-import threading
 
 HOST = '192.168.43.54'
 PORT = 5001
