@@ -1,15 +1,16 @@
+from forkExample import ForkExample
 from pyAmakCore.classes.environment import Environment
-from fork import Fork
 
 
-class SimpleEnvironment(Environment):
+class TableExample(Environment):
+
     def __init__(self):
         self._forks = []
         super().__init__()
 
     def on_initialization(self):
-        for _ in range(10):
-            self._forks.append(Fork())
+        for i in range(10):
+            self._forks.append(ForkExample())
 
     def get_forks(self):
         """
