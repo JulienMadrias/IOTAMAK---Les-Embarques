@@ -67,6 +67,10 @@ class ControleurSMA(Controleur):
         self.addPoint(self.__chart[2],0,self.get_amas().get_cycle(),self.__hoursThinkingMr5)
 
         for i in range(10):
+            print('*'*10)
+            print(agents[i].get_state())
+            print('*'*10)
+
             state = agents[i].get_state()
             if state == State.EATING:
                 self.change_color(self.__philosophers[i], 'green')

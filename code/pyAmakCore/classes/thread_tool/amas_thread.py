@@ -1,20 +1,21 @@
 """
 thread class for amas
 """
+from pyAmakCore.classes.thread_tool.schedulable_thread import SchedulableThread
+from pyAmakCore.classes.agent import Agent
+from pyAmakCore.classes.amas import Amas
+from pyAmakCore.classes.thread_tool.agent_thread import AgentThread
+from pyAmakCore.enumeration.executionPolicy import ExecutionPolicy
 from threading import Thread
 from typing import List
 
+import json
 import sys
 import pathlib
 
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
 
-from pyAmakCore.enumeration.executionPolicy import ExecutionPolicy
-from pyAmakCore.classes.thread_tool.agent_thread import AgentThread
-from pyAmakCore.classes.amas import Amas
-from pyAmakCore.classes.agent import Agent
-from pyAmakCore.classes.thread_tool.schedulable_thread import SchedulableThread
 
 
 class AmasThread(SchedulableThread):
@@ -100,7 +101,8 @@ class AmasThread(SchedulableThread):
         self.schedulable.on_cycle_end()
 
         self.remove_agents()
-        self.schedulable.to_csv(self.schedulable.get_cycle(), self.schedulable.get_agents())
+        self.schedulable.to_csv(
+            self.schedulable.get_cycle(), self.schedulable.get_agents())
 
         self.schedulable.cycle()
 
@@ -121,5 +123,3 @@ class AmasThread(SchedulableThread):
 
         for thread in self.agents_thread:
             thread.join(0)
-
-

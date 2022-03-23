@@ -1,6 +1,12 @@
 """
 thread class for amas
 """
+import paho.mqtt.client as mqtt
+from pyAmakCore.classes.thread_tool.schedulable_thread import SchedulableThread
+from pyAmakCore.classes.agent import Agent
+from pyAmakCore.classes.amas import Amas
+from pyAmakCore.classes.thread_tool.agent_thread import AgentThread
+from pyAmakCore.enumeration.executionPolicy import ExecutionPolicy
 from threading import Thread
 from typing import List
 
@@ -10,11 +16,9 @@ import pathlib
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
 
-from pyAmakCore.enumeration.executionPolicy import ExecutionPolicy
-from pyAmakCore.classes.thread_tool.agent_thread import AgentThread
-from pyAmakCore.classes.amas import Amas
-from pyAmakCore.classes.agent import Agent
-from pyAmakCore.classes.thread_tool.schedulable_thread import SchedulableThread
+
+client = mqtt.Client()
+client.connect('localhost', 1883, 60)
 
 
 class AmasThread(SchedulableThread):
@@ -78,6 +82,9 @@ class AmasThread(SchedulableThread):
         """
         main part of the cycle
         """
+
+        client.publish("topic/sma/cycle", self.schedulable.get_cycle())
+
         for agent in self.agents:
             agent.is_waiting.release()
         # agent cycle
@@ -100,7 +107,8 @@ class AmasThread(SchedulableThread):
         self.schedulable.on_cycle_end()
 
         self.remove_agents()
-        self.schedulable.to_csv(self.schedulable.get_cycle(), self.schedulable.get_agents())
+        self.schedulable.to_csv(
+            self.schedulable.get_cycle(), self.schedulable.get_agents())
 
         self.schedulable.cycle()
 
@@ -121,5 +129,3 @@ class AmasThread(SchedulableThread):
 
         for thread in self.agents_thread:
             thread.join(0)
-
-

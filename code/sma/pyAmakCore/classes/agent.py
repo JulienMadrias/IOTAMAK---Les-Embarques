@@ -1,6 +1,8 @@
 """
 Class Agent
 """
+from pyAmakCore.enumeration.agent_phase import Phase
+from pyAmakCore.exception.override import ToOverrideWarning
 from random import randint
 from math import inf
 from typing import List
@@ -8,9 +10,6 @@ import sys
 import pathlib
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
-
-from pyAmakCore.exception.override import ToOverrideWarning
-from pyAmakCore.enumeration.agent_phase import Phase
 
 
 class Agent:
@@ -173,6 +172,7 @@ class Agent:
         """
         set agent phase to the next phase
         """
+
         next_phase = {
             Phase.INITIALIZING: Phase.PERCEPTION,
             Phase.PERCEPTION: Phase.PERCEPTION_DONE,

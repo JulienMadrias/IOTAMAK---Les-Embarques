@@ -6,6 +6,7 @@ from pyAmakIHM.classes.fenetre import Fenetre
 from sma_controller import ControleurSMA
 from sma_amas import SimpleAmas
 
+
 fenetre = Fenetre("Prototype Philosophers")
 
 ToOverrideWarning.enable_warning(False)
@@ -16,9 +17,4 @@ scheduler = SchedulerIHM(amas)
 
 controleur = ControleurSMA(fenetre, scheduler)
 
-
-def main():
-    controleur.start()
-
-
-main()
+controleur.start()

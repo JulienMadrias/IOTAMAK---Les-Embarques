@@ -8,7 +8,7 @@ import pathlib
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
 
-from pyAmakCore.classes.communicating_agent import CommunicatingAgent
+# from pyAmakCore.classes.communicating_agent import CommunicatingAgent
 from pyAmakCore.classes.agent import Agent
 from pyAmakCore.enumeration.executionPolicy import ExecutionPolicy
 
@@ -30,8 +30,8 @@ class AgentThread:
         """
         this is the first phase of a cycle
         """
-        if isinstance(self.agent, CommunicatingAgent):
-            self.agent.read_mails()
+        # if isinstance(self.agent, CommunicatingAgent):
+        #     self.agent.read_mails()
 
         self.agent.on_perceive()
         self.agent.set_criticality(self.agent.compute_criticality())
@@ -50,9 +50,10 @@ class AgentThread:
         """
         main part of an agent thread
         """
+        
         while not self.exit_bool:
 
-            self.is_waiting.acquire()
+            # self.is_waiting.acquire()
             if self.exit_bool:
                 return
 

@@ -13,14 +13,17 @@ class SimpleAgent(Agent):
         self.__left = left
         self.__right = right
 
+    def id(self):
+        return self.__id2
+
     def on_perceive(self) -> None:
-        print('In perceive')
+        pass
 
     def on_decide(self) -> None:
-        print('In decide')
+        pass
 
     def on_act(self) -> None:
-        print('In act')
+        pass
 
     def compute_criticality(self):
         if self.__state == State.HUNGRY:
@@ -29,6 +32,9 @@ class SimpleAgent(Agent):
 
     def get_state(self):
         return self.__state
+
+    def set_state(self, state):
+        self.__state = state
 
     def get_Left_Fork(self):
         if self.__left is not None:

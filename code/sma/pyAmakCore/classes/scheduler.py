@@ -35,6 +35,7 @@ class Scheduler(SchedulerCore):
         add a schedulable in scheduler
         """
         schedulable_thread = cls(schedulable)
+        print(schedulable_thread)
         self.__schedulables.append(schedulable_thread)
         current_thread = Thread(target=schedulable_thread.run)
         self.__schedulables_threads.append(current_thread)
