@@ -10,6 +10,8 @@ from pyAmakCore.enumeration.executionPolicy import ExecutionPolicy
 from threading import Thread
 from typing import List
 
+import config
+
 import sys
 import pathlib
 
@@ -18,7 +20,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
 
 
 client = mqtt.Client()
-client.connect('localhost', 1883, 60)
+client.connect(config.HOST, 1883, 60)
 
 
 class AmasThread(SchedulableThread):
@@ -28,6 +30,9 @@ class AmasThread(SchedulableThread):
 
     def __init__(self, amas: Amas) -> None:
         super().__init__(amas)
+
+        # added to manage environment
+        self.amas = amas
 
         self.agents: List[AgentThread] = []
         self.agents_thread: List[Thread] = []
@@ -84,6 +89,7 @@ class AmasThread(SchedulableThread):
         """
 
         client.publish("topic/sma/cycle", self.schedulable.get_cycle())
+        self.amas.update_environment()
 
         for agent in self.agents:
             agent.is_waiting.release()

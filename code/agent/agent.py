@@ -65,12 +65,13 @@ class Agent:
     """
     Class Agent
     """
-    __class_id: int = 0
+    # __class_id: int = 0
 
     def __init__(self, id) -> None:
-        self.__id: int = Agent.__class_id
-        self.__class_id = id
-        Agent.__class_id += 1
+        # self.__id: int = Agent.__class_id
+        # self.__class_id = id
+        self.__id = id
+        # Agent.__class_id += 1
         self.__neighbours: List['Agent'] = []
         self.__phase: Phase = Phase.INITIALIZING
         self.__criticality: float = 0

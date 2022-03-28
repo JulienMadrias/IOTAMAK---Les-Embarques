@@ -4,23 +4,19 @@ from fork import Fork
 from state import State
 import paho.mqtt.client as mqtt
 import pickle
-
-
 import socket
 import tqdm
 import os
+import config
 
-
-HOST = '127.0.0.1'
-PORT = 5001
 SEPARATOR = '<SEPARATOR>'
 # receive 4096 bytes each time
 BUFFER_SIZE = 4096
 
 # create the client socket
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
-    print(f'[+] Connecting to {HOST}:{PORT}')
-    client_socket.connect((HOST, PORT))
+    print(f'[+] Connecting to {config.HOST}:{config.PORT}')
+    client_socket.connect((config.HOST, config.PORT))
     print('[+] Connected.')
 
     # receive the file infos
@@ -55,19 +51,26 @@ with open(filename, 'rb') as f:
     agents_prop_loaded = pickle.load(f)
 
     for agent_prop in agents_prop_loaded:
-        agent = SimpleAgent(agent_prop.get('id'), Fork(), Fork())
-        agent.__neighbours = [SimpleAgent(
+        temp = [SimpleAgent(
             neighbour.get('id'), Fork(), Fork()) for neighbour in agent_prop.get('neighbours')]
+
+        agent = SimpleAgent(agent_prop.get('id'), Fork(), Fork())
+
+        for neighbour in agent_prop.get('neighbours'):
+            agent.add_neighbour(SimpleAgent(
+                neighbour.get('id'), Fork(), Fork()))
+
         agents.append(agent)
 
 
 client = mqtt.Client()
-client.connect('localhost', 1883, 60)
+client.connect(config.HOST, 1883, 60)
 
 
 def on_connect(client, userdata, flags, rc):
     print("Connected... waiting for any published message")
     client.subscribe("topic/sma/cycle")
+    client.subscribe("topic/sma/env")
     for i in range(9):
         client.subscribe("topic/sma/agent_"+str(i))
 
@@ -117,7 +120,9 @@ def new_cycle(client, userdata, msg):
                 {
                     "id": agent.id(),
                     "state": agent.get_state(),
-                    "criticality": agent.get_criticality()
+                    "criticality": agent.get_criticality(),
+                    "hunger_duration": agent.get_hunger_duration(),
+                    "eaten_pastas": agent.get_eaten_pastas(),
                 }
             ))
 
@@ -134,7 +139,12 @@ def new_cycle(client, userdata, msg):
             agent.on_act()
 
             # agent.on_cycle_end()
-
+    elif topic == 'env':
+        # be aware of environment
+        for agent in agents:
+            #
+            print('Coucou je suis l\'agent ', agent.id(),
+                  '. J\'ai connaissance de l\'environnement : ', payload)
     else:
         # topic agent_*
         neighbour_id = int(topic.split('_')[1])
@@ -152,15 +162,15 @@ def new_cycle(client, userdata, msg):
         #       * si c'est son voisin, on le met à jour
         #       sinon, on ne fait rien
 
-        for agent in agents:            
+        for agent in agents:
             if agent.id() != neighbour_id:
-                neighbours = agent.__neighbours
+                neighbours = agent.get_neighbour()
                 for neighbour in neighbours:
                     if neighbour.id() == neighbour_id:
                         # on actualise
                         print(
                             f'Agent {agent.id()} a reçu l\'état de son voisin Agent {neighbour.id()}, mise à jour voisin')
-                        neighbour.__criticality = payload.get('criticality')                        
+                        neighbour.__criticality = payload.get('criticality')
 
     # agent.on_cycle_end()
 

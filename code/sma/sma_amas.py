@@ -82,7 +82,7 @@ class SimpleAmas(Amas):
         #         print(el._SimpleAgent__state)
 
     def connect_mqtt(self):
-        self.mqtt.connect('localhost', 1883, 60)
+        self.mqtt.connect(config.HOST, 1883, 60)
         self.mqtt.on_connect = self.on_connect
         self.mqtt.on_message = self.update_agents
         self.mqtt.loop_start()
@@ -107,4 +107,9 @@ class SimpleAmas(Amas):
             for agent in self.get_agents():
                 if agent.get_id() == agent_id:
                     agent.set_criticality(float(payload.get('criticality')))
-                    agent._SimpleAgent__state = State(payload.get('state'))                    
+                    agent._SimpleAgent__state = State(payload.get('state'))
+
+    def update_environment(self):
+        env = [elt.__dict__ for elt in self.get_environment().get_forks()]
+
+        self.mqtt.publish('topic/sma/env', json.dumps(env))

@@ -16,6 +16,12 @@ class SimpleAgent(Agent):
     def id(self):
         return self.__id2
 
+    def get_hunger_duration(self):
+        return self.__hungerDuration
+
+    def get_eaten_pastas(self):
+        return self.__eatenPastas
+
     def on_perceive(self) -> None:
         print('')
 
@@ -32,7 +38,7 @@ class SimpleAgent(Agent):
                 next_state = State.THINK
         else:
             if self.__state == State.HUNGRY:
-                self.__hungerDuration += 1
+                self.__hungerDuration += 1        
                 if self.get_most_critical_neighbor(True) == self:
                     self.__left.try_take(self)
                     self.__right.try_take(self)

@@ -5,19 +5,10 @@ import config
 import sma_launch
 
 
-HOST = '127.0.0.1'
-PORT = 5001
-FILENAME = ''
-
 SEPARATOR = '<SEPARATOR>'
 BUFFER_SIZE = 1024 * 4  # 4KB
 
-MAX_RASP = 2
-
 server_socket = None
-
-# launch sma
-# sma_launch.main()
 
 
 def accept_connection():
@@ -25,15 +16,14 @@ def accept_connection():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         global server_socket
         server_socket = s
-        server_socket.bind((HOST, PORT))
+        server_socket.bind((config.HOST, config.PORT))
         server_socket.listen(5)
         print('listening on port:', server_socket.getsockname()[1])
         connected_devices = 0
-        while connected_devices < MAX_RASP:
+        while connected_devices < config.MAX_RASP:
             client_socket, address = server_socket.accept()
             print(f'[+] {address} is connected.')
             config.connected_rasp.append(address)
-            # send_file(FILENAME, client_socket)
 
             client_sockets.append(client_socket)
 
@@ -68,5 +58,3 @@ def send_file(filename, client_socket):
 
 def close_socket():
     server_socket.close()
-
-# accept_connection()
