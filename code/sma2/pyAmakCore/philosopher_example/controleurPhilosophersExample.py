@@ -3,7 +3,7 @@ from state import State
 from math import cos, sin, pi
 from random import randint
 
-class ControleurSMA(Controleur):
+class ControleurPhilosophersExample(Controleur):
 
     def __init__(self, fenetre, scheduler):
         super().__init__(fenetre, scheduler)
