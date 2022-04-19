@@ -1,0 +1,508 @@
+[
+  {
+    "cycle_1": [
+      {
+        "id": 5,
+        "state": 2,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 6,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 7,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 8,
+        "state": 2,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 9,
+        "state": 3,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 0,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 1,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 2,
+        "state": 3,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 3,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 4,
+        "state": 3,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 0
+      }
+    ],
+    "cycle_2": [
+      {
+        "id": 5,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 6,
+        "state": 2,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 0,
+        "state": 2,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 1,
+        "state": 3,
+        "criticality": 1,
+        "hunger_duration": 2,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 2,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 3,
+        "state": 2,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 0
+      },
+      {
+        "id": 4,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 7,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 8,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 9,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 1
+      }
+    ],
+    "cycle_3": [
+      {
+        "id": 5,
+        "state": 2,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 6,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 7,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 8,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 9,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 0,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 1,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 2,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 3
+      },
+      {
+        "id": 3,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 4,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 2
+      }
+    ],
+    "cycle_4": [
+      {
+        "id": 0,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 1,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 2,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 4
+      },
+      {
+        "id": 3,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 4,
+        "state": 3,
+        "criticality": 1,
+        "hunger_duration": 2,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 5,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 6,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 7,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 3
+      },
+      {
+        "id": 8,
+        "state": 2,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 9,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 4
+      }
+    ],
+    "cycle_5": [
+      {
+        "id": 0,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 1,
+        "state": 2,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 2,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 5
+      },
+      {
+        "id": 3,
+        "state": 3,
+        "criticality": 1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 4,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 4
+      },
+      {
+        "id": 5,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 6,
+        "state": 3,
+        "criticality": 1,
+        "hunger_duration": 2,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 7,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 4
+      },
+      {
+        "id": 8,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 3
+      },
+      {
+        "id": 9,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 6
+      }
+    ],
+    "cycle_6": [
+      {
+        "id": 5,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 6,
+        "state": 3,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 4
+      },
+      {
+        "id": 7,
+        "state": 3,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 4
+      },
+      {
+        "id": 8,
+        "state": 3,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 3
+      },
+      {
+        "id": 0,
+        "state": 3,
+        "criticality": 1,
+        "hunger_duration": 2,
+        "eaten_pastas": 1
+      },
+      {
+        "id": 1,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 2,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 5
+      },
+      {
+        "id": 3,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 4,
+        "state": 3,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 4
+      },
+      {
+        "id": 9,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 7
+      }
+    ],
+    "cycle_7": [
+      {
+        "id": 5,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 3
+      },
+      {
+        "id": 6,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 6
+      },
+      {
+        "id": 7,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 5
+      },
+      {
+        "id": 8,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 4
+      },
+      {
+        "id": 9,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 1,
+        "eaten_pastas": 8
+      },
+      {
+        "id": 0,
+        "state": 1,
+        "criticality": -1,
+        "hunger_duration": 2,
+        "eaten_pastas": 3
+      },
+      {
+        "id": 1,
+        "state": 2,
+        "criticality": 0,
+        "hunger_duration": 1,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 2,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 5
+      },
+      {
+        "id": 3,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 2
+      },
+      {
+        "id": 4,
+        "state": 2,
+        "criticality": -1,
+        "hunger_duration": 0,
+        "eaten_pastas": 5
+      }
+    ]
+  }
+]

@@ -38,7 +38,7 @@ class SimpleAgent(Agent):
                 next_state = State.THINK
         else:
             if self.__state == State.HUNGRY:
-                self.__hungerDuration += 1        
+                self.__hungerDuration += 1
                 if self.get_most_critical_neighbor(True) == self:
                     self.__left.try_take(self)
                     self.__right.try_take(self)
@@ -69,3 +69,9 @@ class SimpleAgent(Agent):
     def get_Right_Fork(self):
         if self.__right is not None:
             return self.__right
+
+    def subscribe(self, agent_id, client):
+        client.subscribe("topic/sma/agent_"+str(agent_id))
+
+    def unsubscribe(self, agent_id, client):
+        client.unsubscribe("topic/sma/agent_"+str(agent_id))
