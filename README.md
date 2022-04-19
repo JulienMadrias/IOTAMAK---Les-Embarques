@@ -28,3 +28,13 @@
   * main.py
   * tout les fichiers/classes utilisés par les agents (exemple: fork.py dans le SMA des philosophes)
 
+
+### Modification à apporter dans le code
+
+ ## Dans le fichier main du côté client
+ 
+ Dans on_onnect: Mettre les agents auquel l'agent doit subscribe dès le départ
+ Dans new_cycle: 
+   -Si le topic est cycle: pour spécifier les paramètres que le client doit publier
+   -Si le topic est env: pour des actions spécifiques en cas de mise à jour de l'environnement
+   -Sinon: pour observer les voisins et réagir
