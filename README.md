@@ -29,9 +29,9 @@
   * tout les fichiers/classes utilisés par les agents (exemple: fork.py dans le SMA des philosophes)
 
 
-### Modification à apporter dans le code
+## Modification à apporter dans le code
 
- ## Dans le fichier main du côté client
+ ### Dans le fichier main du côté client
  
  Dans on_onnect: Mettre les agents auquel l'agent doit subscribe dès le départ
  Dans new_cycle: 
