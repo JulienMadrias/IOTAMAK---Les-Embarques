@@ -33,7 +33,6 @@ def accept_connection():
 
 
 def send_file(filename, client_socket):
-    print
     # get the file size
     filesize = os.path.getsize(filename)
 
