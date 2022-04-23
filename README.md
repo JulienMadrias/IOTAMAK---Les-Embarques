@@ -24,7 +24,7 @@
  
  (Présents dans le dossier ./code/agent)
   * agent.py
-  * config
+  * config.py
   * main.py
   * tout les fichiers/classes utilisés par les agents (exemple: fork.py dans le SMA des philosophes)
 
@@ -33,7 +33,7 @@
 
  ### Dans le fichier main du côté client
  
- * Dans on_onnect: Mettre les agents auquel l'agent doit subscribe dès le départ
+ * Dans on_connect: Mettre les agents auquel l'agent doit subscribe dès le départ
  * Dans new_cycle: 
     * Si le topic est cycle: pour spécifier les paramètres que le client doit publier
     * Si le topic est env: pour des actions spécifiques en cas de mise à jour de l'environnement
